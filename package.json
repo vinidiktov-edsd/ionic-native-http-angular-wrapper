@@ -11,7 +11,7 @@
 	},
 	"repository" : {
 		"type" : "git",
-		"url" : "git+https://github.com/ganey/ionic-native-http-angular-wrapper.git"
+		"url" : "git+https://github.com/CaspianTechnologies/ionic-native-http-angular-wrapper.git"
 	},
 	"keywords" : [
 		"ionic",
