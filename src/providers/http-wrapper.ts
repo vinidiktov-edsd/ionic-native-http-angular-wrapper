@@ -3,6 +3,8 @@ import {HTTP as nativeHttp} from '@ionic-native/http';
 import {Headers, Http as angularHttp, RequestMethod, RequestOptionsArgs} from "@angular/http";
 import {checkAvailability} from '@ionic-native/core';
 import {Observable} from "rxjs/Observable";
+import { from } from 'rxjs';
+import { map } from "rxjs/operators";
 import "rxjs";
 
 @Injectable()
@@ -61,67 +63,75 @@ export class HttpWrapper {
                     if (data == null) {
                         data = options.params;
                     }
-                    return Observable.fromPromise(this.nativeHttp.get(url, data, headers)).map((res: any) => {
-                        return {
-                            json() {
-                                return JSON.parse(res.data);
-                            },
-                            text(ignoredEncodingHint) {
-                                return res.data.toString();
-                            },
-                            data: res.data,
-                            headers: new Headers(res.headers)
-                        }
-                    });
+                    return from(this.nativeHttp.get(url, data, headers)).pipe(
+                        map((res: any) => {
+                            return {
+                                json() {
+                                    return JSON.parse(res.data);
+                                },
+                                text(ignoredEncodingHint) {
+                                    return res.data.toString();
+                                },
+                                data: res.data,
+                                headers: new Headers(res.headers)
+                            }
+                        })
+                    )
                 case RequestMethod.Post:
                     if (data == null) {
                         data = options.body != null ? options.body : {};
                     }
-                    return Observable.fromPromise(this.nativeHttp.post(url, data, headers)).map((res: any) => {
-                        return {
-                            json() {
-                                return JSON.parse(res.data);
-                            },
-                            text(ignoredEncodingHint) {
-                                return res.data.toString();
-                            },
-                            data: res.data,
-                            headers: new Headers(res.headers)
-                        }
-                    });
+                    return from(this.nativeHttp.post(url, data, headers)).pipe(
+                        map((res: any) => {
+                            return {
+                                json() {
+                                    return JSON.parse(res.data);
+                                },
+                                text(ignoredEncodingHint) {
+                                    return res.data.toString();
+                                },
+                                data: res.data,
+                                headers: new Headers(res.headers)
+                            }
+                        })
+                    )
                 case RequestMethod.Put:
                     if (data == null) {
                         data = options.body != null ? options.body : {};
                     }
-                    return Observable.fromPromise(this.nativeHttp.put(url, data, headers)).map((res: any) => {
-                        return {
-                            json() {
-                                return JSON.parse(res.data);
-                            },
-                            text(ignoredEncodingHint) {
-                                return res.data.toString();
-                            },
-                            data: res.data,
-                            headers: new Headers(res.headers)
-                        }
-                    });
+                    return from(this.nativeHttp.put(url, data, headers)).pipe(
+                        map((res: any) => {
+                            return {
+                                json() {
+                                    return JSON.parse(res.data);
+                                },
+                                text(ignoredEncodingHint) {
+                                    return res.data.toString();
+                                },
+                                data: res.data,
+                                headers: new Headers(res.headers)
+                            }
+                        })
+                    )
                 case RequestMethod.Delete:
                     if (data == null) {
                         data = options.body != null ? options.body : {};
                     }
                     console.log('deleting with data:',data);
-                    return Observable.fromPromise(this.nativeHttp.delete(url, data, headers)).map((res: any) => {
-                        return {
-                            json() {
-                                return JSON.parse(res.data);
-                            },
-                            text(ignoredEncodingHint) {
-                                return res.data.toString();
-                            },
-                            data: res.data,
-                            headers: new Headers(res.headers)
-                        }
-                    });
+                    return from(this.nativeHttp.delete(url, data, headers)).pipe(
+                        map((res: any) => {
+                            return {
+                                json() {
+                                    return JSON.parse(res.data);
+                                },
+                                text(ignoredEncodingHint) {
+                                    return res.data.toString();
+                                },
+                                data: res.data,
+                                headers: new Headers(res.headers)
+                            }
+                        })
+                    )
                 default:
                     throw 'Request Method not found';
             }
