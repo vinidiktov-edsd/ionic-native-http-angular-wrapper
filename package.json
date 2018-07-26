@@ -4,8 +4,9 @@
   "description": "A basic package for making @ionic-native/http behave with observables and fall back to @angular/common/http.",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
-  "files": "dist",
+  "files": ["dist"],
   "scripts": {
+    "prepare": "npm run build",
     "ngc": "ngc",
     "build": "rm -rf aot dist && npm run ngc",
     "publishPackage": "npm run build && npm publish"
