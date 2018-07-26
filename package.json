@@ -5,6 +5,7 @@
 	"main" : "./dist/index.js",
 	"typings" : "./dist/index.d.ts",
 	"scripts" : {
+    "prepare": "npm run build",
 		"build" : "rm -rf aot dist && npm run ngc",
 		"ngc" : "ngc",
 		"publishPackage" : "npm run build && npm publish"
