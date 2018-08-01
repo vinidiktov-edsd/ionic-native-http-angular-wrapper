@@ -35,7 +35,7 @@
 		"@angular/http": "^4.4.0",
 		"@angular/platform-browser": "^4.4.0",
 		"@angular/platform-browser-dynamic": "^4.4.0",
-		"@ionic-native/http": "^4.3.0",
+		"@ionic-native/http": "4.10.0",
 		"@types/node": "^6.0.60",
 		"rxjs": "^6.1.0",
 		"rxjs-compat": "^6.2.0",
@@ -44,6 +44,6 @@
 		"zone.js": "^0.8.10"
 	},
 	"dependencies": {
-		"@ionic-native/core": "^4.3.0"
+		"@ionic-native/core": "4.10.0"
 	}
 }
